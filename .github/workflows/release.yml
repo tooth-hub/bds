@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'BDS version'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          chmod +x scripts/release.sh
+
+      - run: |
+          scripts/release.sh ${{ github.event.inputs.version }}
