@@ -19,7 +19,7 @@ jobs:
           git config user.email github-actions@github.com
 
       - run: |
-          chmod +x scripts/release.sh
+          chmod +x release.sh
 
       - run: |
-          scripts/release.sh ${{ github.event.inputs.version }}
+          release.sh ${{ github.event.inputs.version }}
