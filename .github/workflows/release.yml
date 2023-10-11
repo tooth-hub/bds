@@ -19,4 +19,4 @@ jobs:
           chmod +x release.sh
 
       - run: |
-          release.sh
+          ./release.sh
