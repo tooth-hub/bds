@@ -18,13 +18,13 @@ TOOTH_TEMPLATE=${TOOTH_TEMPLATE//<BDS_VERSION>/$BDS_VERSION}
 TOOTH_TEMPLATE=${TOOTH_TEMPLATE//<TOOTH_VERSION>/$TOOTH_VERSION}
 
 # Check if release/$BDS_VERSION already exists
-if git rev-parse --verify release/$BDS_VERSION >/dev/null 2>&1; then
-    echo "release/$BDS_VERSION already exists"
+if git rev-parse --verify release/$TOOTH_VERSION >/dev/null 2>&1; then
+    echo "release/$TOOTH_VERSION already exists"
     exit 1
 fi
 
 # Create release/$BDS_VERSION
-git checkout -b release/$BDS_VERSION
+git checkout -b release/$TOOTH_VERSION release/base
 
 # Write tooth.json
 echo "$TOOTH_TEMPLATE" > tooth.json
@@ -33,4 +33,4 @@ echo "$TOOTH_TEMPLATE" > tooth.json
 git add tooth.json
 git commit -m "Release $BDS_VERSION"
 git tag -a $BDS_VERSION -m "Release $BDS_VERSION"
-git push origin release/$BDS_VERSION
+git push origin release/$TOOTH_VERSION
