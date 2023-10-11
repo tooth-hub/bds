@@ -24,7 +24,7 @@ if git rev-parse --verify release/$TOOTH_VERSION >/dev/null 2>&1; then
 fi
 
 # Create release/$BDS_VERSION
-git checkout -b release/$TOOTH_VERSION release/base
+git checkout -b release/$TOOTH_VERSION --force $(git rev-list --max-parents=0 HEAD)
 
 # Write tooth.json
 echo "$TOOTH_TEMPLATE" > tooth.json
