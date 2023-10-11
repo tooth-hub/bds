@@ -3,11 +3,6 @@
 TOOTH_TEMPLATE=$(cat tooth.template.json)
 VERSIONS=$(cat versions.txt)
 
-# For each line of versions.txt, run release()
-for VERSION in $VERSIONS; do
-    release $VERSION
-done
-
 # Usage release <BDS_VERSION>
 release() {
     # Set $BDS_VERSION and $TOOTH_VERSION
@@ -37,3 +32,8 @@ release() {
     git tag v$TOOTH_VERSION
     git push origin v$TOOTH_VERSION
 }
+
+# For each line of versions.txt, run release()
+for VERSION in $VERSIONS; do
+    release $VERSION
+done
