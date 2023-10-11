@@ -32,5 +32,5 @@ echo "$TOOTH_TEMPLATE" > tooth.json
 # Commit and push
 git add tooth.json
 git commit -m "Release $BDS_VERSION"
-git tag -a $BDS_VERSION -m "Release $BDS_VERSION"
+git tag v$TOOTH_VERSION
 git push origin release/$TOOTH_VERSION
