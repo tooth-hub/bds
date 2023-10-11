@@ -1,9 +1,6 @@
 on:
+  push:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'BDS version'
-        required: true
 
 jobs:
   release:
@@ -22,4 +19,4 @@ jobs:
           chmod +x release.sh
 
       - run: |
-          release.sh ${{ github.event.inputs.version }}
+          release.sh
