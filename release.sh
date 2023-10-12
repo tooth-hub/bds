@@ -2,7 +2,7 @@
 
 # Usage release <BDS_VERSION>
 release() {
-    git checkout -b release --force $(git rev-list --max-parents=0 HEAD)
+    git checkout -b release $(git rev-list --max-parents=0 HEAD)
 
     # Set $BDS_VERSION and $TOOTH_VERSION
     BDS_VERSION=$1 # x.y.z.w
@@ -38,4 +38,4 @@ for VERSION in $VERSIONS; do
     release $VERSION
 done
 
-git push --tags --prune origin
+git push --tags origin
