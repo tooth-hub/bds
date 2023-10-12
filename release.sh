@@ -2,6 +2,7 @@
 
 # Usage release <BDS_VERSION>
 release() {
+    git reset --hard
     git checkout -b release $(git rev-list --max-parents=0 HEAD)
 
     # Set $BDS_VERSION and $TOOTH_VERSION
