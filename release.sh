@@ -31,6 +31,7 @@ VERSIONS=$(cat versions.txt)
 
 # Remove all tags
 git tag -l | xargs git tag -d
+git push --tags --prune origin
 
 # For each line of versions.txt, run release()
 for VERSION in $VERSIONS; do
