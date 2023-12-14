@@ -2,19 +2,22 @@
 
 # Fetch the download link for the latest version of BDS
 response=$(curl -s https://mc-bds-helper.vercel.app/api/latest)
+echo "Got response from the API: $response"
 
 # Extract the version number using regex
 if [[ $response =~ [0-9]+\.[0-9]+\.[0-9]+\.[0-9]+ ]]; then
     version="${BASH_REMATCH[0]}"
+    echo "Parsed version: $version"
 else
     echo "Failed to extract version number from the response."
     exit 1
 fi
 
-echo "The latest versions is $version."
-
 # Compare the last line of versions.txt with the latest version
-if [[ $(tail -n 2 versions.txt | tr -d '\n') == $version ]]; then
-    echo "The latest version is already downloaded."
+last_recorded_version=$(tail -n 1 versions.txt)
+echo "Last recorded version: $last_recorded_version"
+
+if [[ $last_recorded_version == $version ]]; then
+    echo "The latest version is already recorded."
     exit 0
 fi
