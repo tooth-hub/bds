@@ -1,5 +1,7 @@
 on:
   push:
+  schedule:
+    - cron: 0 * * * *
   workflow_dispatch:
 
 jobs:
@@ -15,8 +17,12 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - run: |
+      - name: Fetch latest version
+        run: |
+          chmod +x fetch_latest.sh
+          ./fetch_latest.sh
+          
+      - name: Release new versions
+        run: |
           chmod +x release.sh
-
-      - run: |
           ./release.sh

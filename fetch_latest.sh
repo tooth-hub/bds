@@ -23,7 +23,7 @@ if [[ $last_recorded_version == $version ]]; then
 fi
 
 # Append the latest version to versions.txt
-echo "$version\n" >> versions.txt
+echo "$version" >> versions.txt
 
 # Git commit and push
 git add versions.txt
