@@ -21,3 +21,11 @@ if [[ $last_recorded_version == $version ]]; then
     echo "The latest version is already recorded."
     exit 0
 fi
+
+# Append the latest version to versions.txt
+echo "$version\n" >> versions.txt
+
+# Git commit and push
+git add versions.txt
+git commit -m "Add latest version: $version"
+git push
