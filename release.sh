@@ -23,8 +23,11 @@ for VERSION in $VERSIONS; do
 
     echo "$TOOTH_CONTENT" > tooth.json
 
+    # Copy README.md and logo.png from main branch
+    git checkout main README.md logo.png
+
     # Commit and push
-    git add tooth.json
+    git add tooth.json README.md logo.png
     git commit -m "Release $TOOTH_VERSION"
     git tag v$TOOTH_VERSION
 
